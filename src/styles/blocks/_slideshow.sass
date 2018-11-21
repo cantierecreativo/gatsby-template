@@ -1,0 +1,48 @@
+.slideshow
+  margin: 0 auto
+  .slick-arrow
+    &:before
+      color: $base-body-color
+
+.slideshow__title
+  text-transform: uppercase
+  +padding-bottom(2)
+  +font-size(milli)
+  font-weight: 500
+
+.slideshow__slide
+  text-align: center
+  max-width: 70%
+  margin: 0 auto
+  +vertical-margin(3)
+
+.slideshow__slide__image
+  +margin-bottom(2)
+
+.slick-current
+  opacity: 1 !important
+  transition: all 0.2s $material-ease
+  transform: scale(1.25)
+
+.slick-slide
+  opacity: 0.5
+  transition: all 0.5s $material-ease
+
+.slick-slider
+  .slick-prev
+    @extend .icon--arrow-left
+  .slick-next
+    @extend .icon--arrow-right
+
++at-breakpoint(lap)
+  .slideshow
+    max-width: 90%
+
++at-breakpoint(desk)
+  .slideshow__title
+    +font-size(regular)
+    font-weight: normal
+
+  .slideshow__unslicked *
+    opacity: 1
+    transform: scale(1)

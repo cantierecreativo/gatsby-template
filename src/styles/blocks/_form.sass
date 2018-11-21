@@ -1,0 +1,158 @@
+.form
+  fieldset
+    +padding(2)
+    +margin-bottom(2)
+
+    &:last-child
+      margin-bottom: 0
+
+    legend
+      +font-size(beta)
+      padding: 0 10px
+      margin: 0 -10px
+
+  hr
+    +vertical-margin(2)
+
+  input, textarea, select
+    &::placeholder
+      color: $grey-color
+      +font-size(smallprint)
+
+.form__title
+  +heading-font-family
+  font-weight: bold
+  +margin-bottom(1.5)
+  +font-size(epsilon)
+
+.form__label
+  text-align: left
+  display: block
+  +margin-bottom(1)
+  +font-size(smallprint)
+  font-weight: 500
+  text-transform: uppercase
+
+.form__input__select, .form__input__text
+  color: $base-body-color
+  border: 1px solid $base-body-color
+  background-color: inherit
+  margin: 10px auto
+  +margin-bottom(2)
+
+  &:focus, &:hover
+    border-color: $primary-color
+
+.form__input__textarea
+  color: $base-body-color
+  border: 1px solid $base-body-color
+  +margin-bottom(2)
+  width: 100%
+  background-color: inherit
+  height: 150px
+  box-sizing: border-box
+  &:focus, &:hover
+    border-color: $primary-color
+
+.form__field
+  +margin-bottom(2)
+
+  &:last-child
+    margin-bottom: 0
+
+.form__actions
+  +margin-top(2)
+
+.form__field--invalid
+  #{$all-text-inputs}, textarea
+    border: 1px solid $alert-color
+
+.form__error
+  color: $alert-color
+  +margin-top(1)
+  +font-size(milli)
+
+.form__hint
+  color: $light-body-color
+  +margin-top(1)
+  +font-size(milli)
+
+.form__input--large
+  +font-size(gamma)
+
+.form__block
+  +margin-bottom(3)
+  +padding-bottom(3)
+  border-bottom: 1px solid $border-color
+
+.form__policy,
+.form__policy a
+  color: $primary-color
+
+.form__policy input__label
+  margin-right(0.5)
+
+.form__field--with-prefix
+  position: relative
+
+  .form__field__prefix
+    +center-vertically
+    left: 0px
+    width: 2em
+    text-align: right
+    z-index: 2
+
+  .form__field__input *
+    padding-left: 2.5em
+
+.form__element
+  margin: 6px auto
+  text-align: center
+  display: block
+
+.form__element .input--checkbox span
+  +font-size(milli)
+
+.form__field--with-arrow
+  position: relative
+  &:after
+    @extend .icon--arrow-down:before
+    +font-size(delta)
+    +position(absolute, null 10px 0 null)
+    color: $primary-color
+    +margin-bottom(0.5)
+
+.form--white
+  @extend .form
+  color: white
+  input, textarea, select
+    &::placeholder
+      color: white
+      opacity: 0.7
+
+  .form__label, .form__policy, .form__policy:before
+    color: white
+
+  .form__input__select, .form__input__text, .form__input__textarea
+    color: white
+    border: 1px solid white
+    &:focus, &:hover
+      border-color: $aqua-l-color
+    option
+      color: $base-body-color
+
+
+
++at-breakpoint(desk)
+  .form__element
+    text-align: center
+
+  .form__title
+    +font-size(delta)
+
+  .form__policy
+    +vertical-margin(1)
+    display: block
+
+  .form__input__textarea
+    height: 256px

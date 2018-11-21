@@ -1,0 +1,46 @@
+.shelf
+
+.shelf__item
+  text-align: center
+  max-width: 60%
+  margin: 0 auto
+  +padding-top(4)
+
+.shelf__title
+  +font-size(beta)
+  +heading-font-family
+  +padding-bottom(2)
+
+.shelf__subtitle
+  +body-font-family
+  +font-size(smallprint)
+  +padding-bottom(2)
+
+.shelf__text
+  +padding-bottom(2)
+
+.shelf__image
+  display: block
+  height: 50px
+  margin: 0 auto
+  +margin-bottom(2)
+
+.shelf__number
+  +heading-font-family
+  +font-size(epsilon)
+  color: $red-color
+  +margin-right(0.5)
+
++at-breakpoint(desk)
+  .shelf
+    display: flex
+    align-items: top
+    justify-content: space-around
+    +vertical-padding(2)
+
+  .shelf__item
+    flex: 1
+    +horizontal-padding(2)
+
+  .shelf__text
+    +font-size(epsilon)

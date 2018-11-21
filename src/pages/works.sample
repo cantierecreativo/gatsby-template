@@ -1,0 +1,72 @@
+import React from 'react'
+import Link from 'gatsby-link'
+import Img from 'gatsby-image'
+import Layout from '../components/layout'
+import { graphql } from 'gatsby'
+
+const IndexPage = ({ data }) => (
+  <Layout data={data}>
+    {data.allDatoCmsWork.edges.map(({ node: work }) => (
+      <div key={work.id}>
+        <Link to={`/works/${work.slug}`}>
+          <Img sizes={work.coverImage.sizes} />
+        </Link>
+        <h6>
+          <Link to={`/works/${work.slug}`}>{work.title}</Link>
+        </h6>
+        <div>
+          <p>{work.excerpt}</p>
+        </div>
+      </div>
+    ))}
+  </Layout>
+)
+
+export default IndexPage
+
+export const query = graphql`
+  query WorksQuery {
+    datoCmsSite {
+      globalSeo {
+        siteName
+      }
+      faviconMetaTags {
+        ...GatsbyDatoCmsFaviconMetaTags
+      }
+    }
+    datoCmsHome {
+      seoMetaTags {
+        ...GatsbyDatoCmsSeoMetaTags
+      }
+      introTextNode {
+        childMarkdownRemark {
+          html
+        }
+      }
+      copyright
+    }
+    allDatoCmsSocialProfile(sort: { fields: [position], order: ASC }) {
+      edges {
+        node {
+          profileType
+          url
+        }
+      }
+    }
+    allDatoCmsWork(sort: { fields: [position], order: ASC }) {
+      edges {
+        node {
+          id
+          title
+          slug
+          excerpt
+          coverImage {
+            sizes(maxWidth: 450, imgixParams: { fm: "jpg", auto: "compress" }) {
+              ...GatsbyDatoCmsSizes
+            }
+          }
+        }
+      }
+    }
+  }
+`

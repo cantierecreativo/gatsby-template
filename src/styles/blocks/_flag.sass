@@ -1,0 +1,82 @@
+.flag
+  +vertical-padding(2)
+
+.flag--rev,
+.flag--top,
+.flag--bottom
+  @extend .flag
+
+.flag--rev
+  direction: rtl
+  text-align: left
+
+.flag__image,
+.flag__body
+  width: 90%
+  text-align: center
+  margin: 0 auto
+
+.flag__image
+  > img
+    display: block
+    max-width: none
+    width: 100%
+    min-height: 300px
+    object-fit: cover
+
+  .flag--rev &
+    padding-right: 0
+    padding-left: $grid-gutter
+
+.flag__title
+  +heading-font-family
+  +font-size(gamma)
+  margin: 0 auto
+  +margin-bottom(2)
+  line-height: 44px
+  max-width: 80%
+
+.flag__description
+  +body-font-family
+  +font-size(epsilon)
+  +margin-bottom(2)
+  max-width: 70%
+  display: none
+
+.flag__button
+  display: none
+
+
+.flag--white
+  @extend .flag
+  color: $light-body-color
+  align-items: flex-start
+
++at-breakpoint(desk)
+  .flag
+    display: flex
+    align-items: center
+
+  .flag__image,
+  .flag__body
+    width: 50%
+    text-align: left
+
+  .flag__image
+    > img
+      min-height: 500px
+
+  .flag__title
+    max-width: 90%
+    margin: 0
+    +margin-bottom(2)
+    +font-size(alpha)
+    line-height: 56px
+
+  .flag__description
+    +margin-bottom(3)
+    max-width: 70%
+    display: block
+
+  .flag__button
+    display: inline-block

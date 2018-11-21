@@ -1,0 +1,189 @@
+.navigation
+  display: flex
+  align-items: center
+  justify-content: space-between
+  z-index: 2
+  +vertical-padding(2)
+
+.navigation__block
+  flex: 1
+
+.navigation__block__centered
+  text-align: center
+  +vertical-padding(1)
+
+.navigation__toggle
+  flex-basis: 100px
+  display: block
+  text-decoration: none
+  i
+    color: white
+    &::before
+      +font-size(epsilon)
+
+.navigation__locale-switcher
+  display: none
+
+.navigation__list
+  text-align: right
+  width: 100%
+
+.navigation__list__icons
+  display: inline-block
+  +margin-left(1)
+
+.navigation__list__item
+  +heading-font-family
+  text-align: center
+  +padding(1)
+  +font-size(delta)
+  line-height: 32px
+
+.navigation__list__item__link
+  +vertical-padding(0.5)
+  text-decoration: none
+  text-align: center
+  color: $light-body-color
+  display: block
+
+.navigation__logo
+  // background-image: url('../images/logo_white_redbox.svg')
+  background-repeat: no-repeat
+  background-position: center
+  background-size: contain
+  height: 25px
+  flex: 2
+
+.navigation__logo__white
+  // background-image: url('../images/logo_white.svg')
+  background-repeat: no-repeat
+  background-position: center
+  background-size: contain
+  height: 30px
+  flex: 2
+
+.navigation__aside
+  +position(fixed, 0 0 0 0)
+  z-index: 2
+  background-color: $primary-color
+
+.navigation__list__lang
+  text-align: center
+
+.navigation__no-header
+  background-color: $primary-color
+
+.navigation__list__lang__item
+  display: inline-block
+  &:first-child
+    &:after
+      content: "-"
+      color: white
+  a
+    opacity: 0.5
+    color: white
+    text-decoration: none
+
+  &.active
+    a
+      opacity: 1
+
+
+.navigation--white
+  @extend .navigation
+  .navigation__logo
+    // background-image: url('../images/logo_blue.svg')
+
+  .navigation__list__item__link
+    color: $primary-color
+
+  .navigation__toggle
+    i
+      color: $primary-color
+
+  .navigation__list__lang__item
+    &:first-child
+      &:after
+        color: $primary-color
+    a
+      color: $primary-color
+
++at-breakpoint(tab)
+  .navigation__list__item
+    +padding(2)
+
++at-breakpoint(desk)
+  .navigation
+    +vertical-padding(3)
+
+  .navigation__logo
+    background-position: left
+    min-width: 100px
+
+  .navigation__list
+    display: inline-block
+    flex-basis: 100px
+    +font-size(smallprint)
+    a
+      text-decoration: none
+
+  .navigation__list__icons
+    +margin-left(2)
+
+  .navigation__block, .navigation__list__lang
+    text-align: right
+
+  .navigation__block
+    flex: auto
+
+
+  .navigation__locale-switcher
+    display: inline-block
+    flex-basis: 100px
+    +font-size(milli)
+
+  .navigation__toggle
+    display: none
+
+  .navigation__list__item__link
+    +heading-font-family
+    +font-size(smallprint)
+    i
+      &::before
+        +font-size(epsilon)
+
+  .navigation__list__item
+    +font-size(smallprint)
+    display: inline-block
+    position: relative
+    +margin-right(1)
+    +padding(0)
+    &:before
+      content: ""
+      position: absolute
+      bottom: -5px
+      left: 0
+      border-bottom: 2px solid $light-body-color
+      width: 0%
+      transition: width 0.2s $material-ease
+      color: $light-body-color
+    &.active
+      color: $light-body-color
+    & svg
+      margin-bottom: -6px
+    &:hover
+      &:before
+        width: 100%
+
+  .navigation__list__lang__item
+    +font-size(smallprint)
+    +heading-font-family
+    font-weight: bold
+
+  .navigation--white
+    .navigation__list__item
+      &:before
+        border-bottom: 2px solid $primary-color
+        color: $primary-color
+      &.active
+        color: $primary-color

@@ -1,0 +1,36 @@
+import React from 'react'
+import Link from 'gatsby-link'
+import { HelmetDatoCms } from 'gatsby-source-datocms'
+import Img from 'gatsby-image'
+import { graphql } from 'gatsby'
+
+export default class Terms extends React.Component {
+  render() {
+    const { data } = this.props
+
+    return (
+      <Layout data={data}>
+        <HelmetDatoCms seo={data.datoCmsTermsPage.seoMetaTags} />
+        <div className="section">
+          <div className="section__title"> {data.datoCmsTermsPage.title} </div>
+          <div
+            className="section__text formatted-content"
+            dangerouslySetInnerHTML={{ __html: data.datoCmsTermsPage.body }}
+          />
+        </div>
+      </Layout>
+    )
+  }
+}
+
+export const query = graphql`
+  query TermsQuery($locale: String!) {
+    datoCmsTermsPage(locale: { eq: $locale }) {
+      seoMetaTags {
+        ...GatsbyDatoCmsSeoMetaTags
+      }
+      title
+      body
+    }
+  }
+`

@@ -1,0 +1,40 @@
+.broken
+  height: 400px
+  background-color: white
+  position: relative
+
+.broken__container
+  +center-vertically
+  text-align: center
+
+.broken__flex
+  display: flex
+  align-items: center
+  justify-content: center
+
+.broken__image
+  width: 100px
+  +horizontal-margin(2)
+
+.broken__text
+  text-align: center
+  color: $primary-color
+  +margin-bottom(2)
+
+.broken__title
+  font-size: 70px
+  +body-font-family
+  color: $primary-color
+
++at-breakpoint(desk)
+  .broken
+    height: 600px
+
+  .broken__container
+    +center
+
+  .broken__title
+    font-size: 300px
+
+  .broken__image
+    width: 200px

@@ -1,0 +1,91 @@
+import React from 'react'
+import { HelmetDatoCms } from 'gatsby-source-datocms'
+import Img from 'gatsby-image'
+import Layout from '../components/layout'
+import { graphql } from 'gatsby'
+
+export default ({ data }) => (
+  <Layout data={data}>
+    <div>
+      <HelmetDatoCms seo={data.datoCmsWork.seoMetaTags} />
+      <div>
+        <h1>{data.datoCmsWork.title}</h1>
+        <p>{data.datoCmsWork.excerpt}</p>
+        {
+          <div className="sheet__slider">
+            {data.datoCmsWork.gallery.map(item => {
+              if (item.sizes != null)
+                return <Img key={item.url} sizes={item.sizes} />
+              else return <img key={item.url} src={item.url} alt={item.url} />
+            })}
+          </div>
+        }
+        <div
+          dangerouslySetInnerHTML={{
+            __html: data.datoCmsWork.descriptionNode.childMarkdownRemark.html,
+          }}
+        />
+        <div>
+          <Img sizes={data.datoCmsWork.coverImage.sizes} />
+        </div>
+      </div>
+    </div>
+  </Layout>
+)
+
+export const query = graphql`
+  query WorkQuery($slug: String!) {
+    datoCmsSite {
+      globalSeo {
+        siteName
+      }
+      faviconMetaTags {
+        ...GatsbyDatoCmsFaviconMetaTags
+      }
+    }
+    datoCmsHome {
+      seoMetaTags {
+        ...GatsbyDatoCmsSeoMetaTags
+      }
+      introTextNode {
+        childMarkdownRemark {
+          html
+        }
+      }
+      copyright
+    }
+    allDatoCmsSocialProfile(sort: { fields: [position], order: ASC }) {
+      edges {
+        node {
+          profileType
+          url
+        }
+      }
+    }
+    datoCmsWork(slug: { eq: $slug }) {
+      seoMetaTags {
+        ...GatsbyDatoCmsSeoMetaTags
+      }
+      title
+      excerpt
+      gallery {
+        url
+        sizes(maxWidth: 300, imgixParams: { fm: "jpg", auto: "compress" }) {
+          ...GatsbyDatoCmsSizes
+          src
+        }
+      }
+      descriptionNode {
+        childMarkdownRemark {
+          html
+        }
+      }
+      coverImage {
+        url
+        sizes(maxWidth: 600, imgixParams: { fm: "jpg", auto: "compress" }) {
+          ...GatsbyDatoCmsSizes
+        }
+      }
+    }
+  }
+`

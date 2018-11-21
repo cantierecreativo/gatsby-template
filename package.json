@@ -1,0 +1,44 @@
+{
+  "name": "gatsby-datocms-demo",
+  "description": "Gatsby DatoCMS creative portfolio demo",
+  "version": "1.0.0",
+  "author": "Lorenzo Ponticelli aka Lorezz <point.point@gmail.com>",
+  "dependencies": {
+    "dotenv": "^6.1.0",
+    "gatsby": "^2.0.50",
+    "gatsby-image": "^2.0.20",
+    "gatsby-link": "^2.0.6",
+    "gatsby-plugin-google-analytics": "^2.0.7",
+    "gatsby-plugin-react-helmet": "^3.0.2",
+    "gatsby-plugin-sass": "^2.0.4",
+    "gatsby-plugin-sharp": "^2.0.12",
+    "gatsby-source-datocms": "^1.1.14",
+    "gatsby-source-filesystem": "^2.0.8",
+    "gatsby-source-iubenda": "^1.0.0",
+    "gatsby-transformer-remark": "^2.1.12",
+    "gatsby-transformer-sharp": "^2.1.8",
+    "node-sass": "^4.10.0",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "react-helmet": "^5.2.0",
+    "react-intl": "^2.7.2",
+    "react-masonry-component": "^6.2.1",
+    "react-slick": "^0.23.2",
+    "slick-carousel": "^1.8.1"
+  },
+  "keywords": [
+    "gatsby"
+  ],
+  "license": "MIT",
+  "main": "n/a",
+  "scripts": {
+    "build": "gatsby build",
+    "dev": "gatsby develop",
+    "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"src/**/*.js\"",
+    "webfonts": "bemo-webfonts -s src/fonts/svg -f src/fonts -S src/styles/variables/_icon-glyphs.scss"
+  },
+  "devDependencies": {
+    "bemo-webfonts": "^1.0.1",
+    "prettier": "^1.15.2"
+  }
+}

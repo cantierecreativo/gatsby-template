@@ -1,0 +1,69 @@
+.block
+
+.block__item
+  margin: 0 auto
+  display: block
+  text-align: center
+  +vertical-margin(3)
+  max-width: 300px
+  text-decoration: none
+  background-color: $light-bg-color
+  +padding-bottom(2)
+
+.block__title
+  +heading-font-family
+  font-weight: bold
+  text-transform: uppercase
+  +padding-bottom(2)
+  +padding-top(2)
+  +font-size(smallprint)
+  max-width: 90%
+  margin: 0 auto
+
+.block__subtitle
+  +font-size(smallprint)
+  +padding-bottom(2)
+
+.block__text
+  max-width: 80%
+  margin: 0 auto
+  +padding-bottom(1)
+  +padding-bottom(3)
+
+.block__image
+  +margin-bottom(2)
+  height: 250px
+
+.block--middle-image
+  @extend .block
+  .block__item
+    +padding(3)
+
+  .block__title
+    +font-size(epsilon)
+    +padding-bottom(1)
+
++at-breakpoint(lap)
+  .block
+    display: flex
+    justify-content: space-between
+
+  .block__item
+    width: 30%
+    transition: all 0.2s $material-ease
+
++at-breakpoint(desk)
+  .block__item
+    max-width: 300px
+
+  .block__image
+    height: 200px
+
+  .block__title
+    +font-size(regular)
+
+  .block__subtitle
+    +font-size(regular)
+
+  .block__text
+    max-width: 60%

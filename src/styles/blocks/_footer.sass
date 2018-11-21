@@ -1,0 +1,60 @@
+.footer
+  background-color: $grey-color
+  color: white
+  +vertical-padding(3)
+
+.footer__logo
+  height: 25px
+
+.footer__stripe
+
+.footer__stripe__item
+  +margin-top(2)
+  display: block
+
+.footer__title
+  text-transform: uppercase
+  +heading-font-family
+  +margin-bottom(1)
+
+.footer__text, .footer__text a, .footer__link
+  +body-font-family
+  +margin-bottom(1)
+  +font-size(smallprint)
+  max-width: 500px
+  color: white
+  +margin-right(0.8)
+
+.footer__link
+  cursor: pointer
+
+.footer__icons
+  +margin-right(1)
+  max-height: 30px
+
+.footer--dark
+  @extend .footer
+  background-color: $grey-d-color
+
+  .footer__title
+    +font-size(milli)
+
+  .footer__text
+    +font-size(milli)
+
++at-breakpoint(lap)
+  .footer
+    +vertical-padding(4)
+
+  .footer__stripe
+    +vertical-padding(2)
+    display: flex
+    justify-content: space-between
+    text-align: left
+
+  .footer__stripe__item
+    flex: 1
+    margin: 0
+
+  .footer--dark
+    +vertical-padding(3)

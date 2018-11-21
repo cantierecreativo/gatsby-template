@@ -1,0 +1,76 @@
+.header
+  background-repeat: no-repeat
+  background-position: bottom
+  background-size: cover
+
+.header__cookie
+  background-color: $grey-color !important
+  color: white
+
+.header__cookie button.header__cookie__button
+  +heading-font-family
+  padding: 0.7em 3em !important
+  text-decoration: none
+  display: inline-block
+  vertical-align: middle
+  white-space: nowrap
+  font-family: inherit
+  cursor: pointer
+  line-height: inherit
+  border: 1px solid white !important
+  background-color: transparent !important
+  color: white !important
+  -webkit-appearance: none
+  box-sizing: border-box
+
+  & + &
+    margin-left: 15px
+
+  .no-touch &:hover
+    box-shadow: 0 3px 5px rgba(black, 0.2)
+    text-shadow: 0 3px 3px rgba(black, 0.2)
+
+  .no-touch &:active
+    box-shadow: 0 1px 3px rgba(black, 0.2)
+    text-shadow: 0 1px 1px rgba(black, 0.2)
+
+  i:first-child
+    margin-right: 0.5em
+
+  i:last-child
+    margin-left: 0.5em
+
+  i:first-child:last-child
+    margin-left: 0
+    margin-right: 0
+
+  &:hover
+    background-color: white !important
+    color: $grey-color !important
+
+.header__cookie__span
+  color: white
+
+.header--blue
+  @extend .header
+
+
+.header--aqua
+  @extend .header
+  .button
+    &:hover
+      color: $aqua-color
+      border-color: $aqua-color
+
++at-breakpoint(desk)
+  .header
+    padding-bottom: 100px
+
+  .header__cookie
+    +horizontal-padding(8)
+
+  .header--blue
+    background-color: $blue-color
+
+  .header--aqua
+    background-color: $aqua-color

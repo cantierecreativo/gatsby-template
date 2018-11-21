@@ -1,0 +1,66 @@
+import React from "react";
+import { HelmetDatoCms } from "gatsby-source-datocms";
+import Layout from "../components/layout";
+import { graphql } from 'gatsby'
+
+export default ({ data }) => (
+  <Layout data={data}>
+    <div className="section">
+      <HelmetDatoCms seo={data.datoCmsWork.seoMetaTags} />
+      <div className="wrapper">
+        <h1 className="sheet__title">{data.datoCmsWork.title}</h1>
+        <p className="sheet__lead">{data.datoCmsWork.excerpt}</p>
+      </div>
+    </div>
+  </Layout>
+);
+
+export const query = graphql`
+  query PageQuery($slug: String!) {
+    datoCmsSite {
+      globalSeo {
+        siteName
+      }
+      faviconMetaTags {
+        ...GatsbyDatoCmsFaviconMetaTags
+      }
+    }
+    datoCmsHome {
+      seoMetaTags {
+        ...GatsbyDatoCmsSeoMetaTags
+      }
+      introTextNode {
+        childMarkdownRemark {
+          html
+        }
+      }
+      copyright
+    }
+    allDatoCmsSocialProfile(sort: { fields: [position], order: ASC }) {
+      edges {
+        node {
+          profileType
+          url
+        }
+      }
+    }
+    datoCmsWork(slug: { eq: $slug }) {
+      seoMetaTags {
+        ...GatsbyDatoCmsSeoMetaTags
+      }
+      title
+      excerpt
+      descriptionNode {
+        childMarkdownRemark {
+          html
+        }
+      }
+      coverImage {
+        url
+        sizes(maxWidth: 600, imgixParams: { fm: "jpg", auto: "compress" }) {
+          ...GatsbyDatoCmsSizes
+        }
+      }
+    }
+  }
+`;
